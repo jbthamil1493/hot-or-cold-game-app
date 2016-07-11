@@ -15,32 +15,30 @@ $(document).ready(function(){
   	/*--- Start a New Game ---*/
 
 	$(".new").on("click", function() {
-		newGame();
+		getRandomInt(min,max);
+		var randomNumber = Math.floor((Math.random() * 100) + 1);
 	});
 
-	$(".button").on("click", function() {
 
-		var randomNumber = Math.floor((Math.random() * 100) + 1);
+	function getRandomInt(min, max) {
+		return Math.floor((Math.random() * 100) + 1);
+	}
+
+	$(".button").on("click", function() {
 	
 		var userGuess = $("input").val();
 		
+		if (userGuess > randomNumber) {
+			alert('You guessed too high!');
+		}
+		if (userGuess < randomNumber) {
+			alert('You guessed too low!');
+		}
 		if (userGuess === randomNumber) {
 			alert('You guessed correctly!');
 		}	
-		else if (userGuess > randomNumber) {
-			alert('You guessed too high!');
-		}
-		else {
-			alert('You guessed too low!');
-		}
 
 	});
-
-	function newGame() {
-		function getRandomInt(min, max) {
-			return Math.floor((Math.random() * 100) + 1);
-		}
-	}
 
 });
 
