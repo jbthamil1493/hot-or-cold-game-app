@@ -16,7 +16,6 @@ $(document).ready(function(){
 
 	$(".new").on("click", function() {
 		getRandomInt(min,max);
-		var randomNumber = Math.floor((Math.random() * 100) + 1);
 	});
 
 
@@ -25,6 +24,7 @@ $(document).ready(function(){
 	}
 
 	$(".button").on("click", function() {
+		var randomNumber = Math.floor((Math.random() * 100) + 1);
 	
 		var userGuess = $("input").val();
 		
