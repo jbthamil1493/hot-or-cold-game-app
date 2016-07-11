@@ -15,17 +15,20 @@ $(document).ready(function(){
   	/*--- Start a New Game ---*/
 
 	$(".new").on("click", function() {
-		getRandomInt(min,max);
+		var min = 0;
+		var max = 100;
+		getRandomNumber(min, max);
+		var randomNumber = Math.floor((Math.random() * 100) + 1);
 	});
 
-
-	function getRandomInt(min, max) {
+	function getRandomNumber(min, max) {
 		return Math.floor((Math.random() * 100) + 1);
 	}
 
 	$(".button").on("click", function() {
+
 		var randomNumber = Math.floor((Math.random() * 100) + 1);
-	
+
 		var userGuess = $("input").val();
 		
 		if (userGuess > randomNumber) {
