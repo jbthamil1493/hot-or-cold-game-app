@@ -16,14 +16,13 @@ $(document).ready(function(){
 
 	$(".new").on("click", function() {
 		newGame();
-		$('ul#guessList').empty();
 	});
 
-	var randomNumber = newGame();
-	
-	var userGuess = $("input").val();
-
 	$(".button").on("click", function() {
+
+		var randomNumber = Math.floor((Math.random() * 100) + 1);
+	
+		var userGuess = $("input").val();
 		
 		if (userGuess === randomNumber) {
 			alert('You guessed correctly!');
