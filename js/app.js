@@ -14,34 +14,40 @@ $(document).ready(function(){
 
   	/*--- Start a New Game ---*/
 
-	$(".new").on("click", function() {
-		var min = 0;
-		var max = 100;
-		getRandomNumber(min, max);
-		var randomNumber = Math.floor((Math.random() * 100) + 1);
+	$(".button").on("click", function() {
+		var userGuess = $("input").val();
+		playGame(userGuess);
 	});
 
-	function getRandomNumber(min, max) {
-		return Math.floor((Math.random() * 100) + 1);
+	$(".new").on("click", function() {
+		getRandomInt(min,max);
+	});
+
+	var min = 0;
+	
+	var max = 100;
+	
+	var randomNumber = Math.floor(Math.random() * 100) + 1;
+
+	function getRandomInt(min,max) {
+		return Math.floor(Math.random() * 100) + 1;
 	}
 
-	$(".button").on("click", function() {
+	function playGame(userGuess) {
 
-		var randomNumber = Math.floor((Math.random() * 100) + 1);
+		if (userGuess === randomNumber) {
+			alert('You guessed correctly!');
+		}
 
-		var userGuess = $("input").val();
-		
 		if (userGuess > randomNumber) {
 			alert('You guessed too high!');
 		}
-		if (userGuess < randomNumber) {
-			alert('You guessed too low!');
-		}
-		if (userGuess === randomNumber) {
-			alert('You guessed correctly!');
-		}	
 
-	});
+		else if (userGuess < randomNumber) {
+			alert('You guessed too low!');
+		}	
+	
+	}
 
 });
 
