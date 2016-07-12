@@ -20,16 +20,12 @@ $(document).ready(function(){
 	});
 
 	$(".new").on("click", function() {
-		getRandomInt(min,max);
+		getRandomInt(randomNumber);
 	});
 
-	var min = 0;
-	
-	var max = 100;
-	
 	var randomNumber = Math.floor(Math.random() * 100) + 1;
 
-	function getRandomInt(min,max) {
+	function getRandomInt(randomNumber) {
 		return Math.floor(Math.random() * 100) + 1;
 	}
 
@@ -39,7 +35,7 @@ $(document).ready(function(){
 			alert('You guessed correctly!');
 		}
 
-		if (userGuess > randomNumber) {
+		else if (userGuess > randomNumber) {
 			alert('You guessed too high!');
 		}
 
