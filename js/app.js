@@ -15,34 +15,56 @@ $(document).ready(function(){
   	/*--- Start a New Game ---*/
 
 	$(".button").on("click", function() {
+		event.preventDefault();
 		var userGuess = $("input").val();
-		playGame(userGuess);
+		validateGuess(userGuess); 
+		checkNumber(userGuess);
 	});
 
 	$(".new").on("click", function() {
-		getRandomInt(randomNumber);
+		
 	});
 
 	var randomNumber = Math.floor(Math.random() * 100) + 1;
 
-	function getRandomInt(randomNumber) {
-		return Math.floor(Math.random() * 100) + 1;
-	}
-
 	function playGame(userGuess) {
 
 		if (userGuess === randomNumber) {
-			alert('You guessed correctly!');
+			$("#feedback").text('You guessed correctly!');
+			$("span").html(parseInt($("span").html()) + 1);
 		}
 
 		else if (userGuess > randomNumber) {
-			alert('You guessed too high!');
+			$("#feedback").text('You guessed too high!');
+			$("span").html(parseInt($("span").html()) + 1);
 		}
 
 		else if (userGuess < randomNumber) {
-			alert('You guessed too low!');
+			$("#feedback").text('You guessed too low!');
+			$("span").html(parseInt($("span").html()) + 1);
 		}	
 	
+	}
+
+	function validateGuess(userGuess) {
+		if (userGuess % 1 === 0) {
+			playGame(userGuess);
+		}
+		else {
+			$("#feedback").text('Number is not an integer!');
+		}
+	}
+
+	function checkNumber(userGuess) {
+		if (userGuess >= 1 && userGuess <= 100) {
+			playGame(userGuess);
+		}
+		else if (userGuess < 1) {
+			$("feedback").text('Number is less than zero!');
+		}
+		else if (userGuess > 100) {
+			$("feedback").text('Number is greater than 100!');
+		}
 	}
 
 });
