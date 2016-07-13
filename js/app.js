@@ -18,7 +18,6 @@ $(document).ready(function(){
 		event.preventDefault();
 		var userGuess = $("input").val();
 		validateGuess(userGuess); 
-		checkNumber(userGuess);
 	});
 
 	$(".new").on("click", function() {
@@ -29,12 +28,7 @@ $(document).ready(function(){
 
 	function playGame(userGuess) {
 
-		if (userGuess === randomNumber) {
-			$("#feedback").text('You guessed correctly!');
-			$("span").html(parseInt($("span").html()) + 1);
-		}
-
-		else if (userGuess > randomNumber) {
+		if (userGuess > randomNumber) {
 			$("#feedback").text('You guessed too high!');
 			$("span").html(parseInt($("span").html()) + 1);
 		}
@@ -42,28 +36,21 @@ $(document).ready(function(){
 		else if (userGuess < randomNumber) {
 			$("#feedback").text('You guessed too low!');
 			$("span").html(parseInt($("span").html()) + 1);
+		}
+
+		else {
+			$("#feedback").text('You guessed correctly!');
+			$("span").html(parseInt($("span").html()) + 1);
 		}	
 	
 	}
 
 	function validateGuess(userGuess) {
-		if (userGuess % 1 === 0) {
+		if (userGuess % 1 === 0 && userGuess >= 1 && userGuess <= 100) {
 			playGame(userGuess);
 		}
 		else {
-			$("#feedback").text('Number is not an integer!');
-		}
-	}
-
-	function checkNumber(userGuess) {
-		if (userGuess >= 1 && userGuess <= 100) {
-			playGame(userGuess);
-		}
-		else if (userGuess < 1) {
-			$("feedback").text('Number is less than zero!');
-		}
-		else if (userGuess > 100) {
-			$("feedback").text('Number is greater than 100!');
+			$("#feedback").text('ERROR: Number must be an integer between 0 and 100!');
 		}
 	}
 
