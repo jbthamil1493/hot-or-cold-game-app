@@ -12,7 +12,7 @@ $(document).ready(function(){
 	$(".button").on("click", function() {
 		event.preventDefault();
 		var userGuess = $("input").val();
-		playFeedback(userGuess); 
+		validateGuess(userGuess); 
 	});
 
 	$(".new").on("click", function() {
