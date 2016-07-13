@@ -16,7 +16,7 @@ $(document).ready(function(){
 	});
 
 	$(".new").on("click", function() {
-	
+		window.location.reload();
 	});
 
 	var randomNumber = Math.floor(Math.random() * 100) + 1;
