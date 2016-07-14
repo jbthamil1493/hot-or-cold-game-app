@@ -38,6 +38,7 @@ $(document).ready(function(){
 		var difference = userGuess - randomNumber;
 		if (difference === 0) {
 			$("#feedback").text('Congratulations, you win!');
+			alert('You have been scorched! Click on New Game located on the top right of the screen to play again!');
 		}
 		else {
 			if (difference >= 30 && difference <= 49) {
@@ -55,13 +56,13 @@ $(document).ready(function(){
 				$("span").html(parseInt($("span").html()) + 1);
 				$("#guessList").append('<li>' + userGuess + '</li>');
 			}
-			else if (difference >= 50 && difference <= 100) {
-				$("#feedback").text('You are ice cold!');
+			else if (difference >= 1 && difference <= 9) {
+				$("#feedback").text('You are on fire!');
 				$("span").html(parseInt($("span").html()) + 1);
 				$("#guessList").append('<li>' + userGuess + '</li>');
 			}
 			else {
-				$("#feedback").text('You are on fire!');
+				$("#feedback").text('You are ice cold!');
 				$("span").html(parseInt($("span").html()) + 1);
 				$("#guessList").append('<li>' + userGuess + '</li>');
 			}		
