@@ -15,10 +15,14 @@ $(document).ready(function(){
 	});
 
 	$(".new").on("click", function() {
-		window.location.reload();
+		newGame();
 	});
 
 	var randomNumber = Math.floor(Math.random() * 100) + 1;
+
+	function newGame() {
+		return window.location.reload();
+	}
 
 	function playFeedback(userGuess) {
 
