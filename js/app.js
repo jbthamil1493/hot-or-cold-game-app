@@ -25,10 +25,12 @@ $(document).ready(function(){
 		if (userGuess > randomNumber) {
 			$("#feedback").text('You are too high!');
 			$("span").html(parseInt($("span").html()) + 1);
+			$("ul#guessList").append('<li>' + userGuess + '</li>');
 		}
 		else if (userGuess < randomNumber) {
 			$("#feedback").text('You are too low!');
 			$("span").html(parseInt($("span").html()) + 1);
+			$("ul#guessList").append('<li>' + userGuess + '</li>');
 		}
 		else {
 			$("#feedback").text('Congratulations, you win!');
