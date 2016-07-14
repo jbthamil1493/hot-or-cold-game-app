@@ -26,7 +26,7 @@ $(document).ready(function(){
 
 	function validateGuess(userGuess) {
 		if (userGuess % 1 === 0 && userGuess >= 1 && userGuess <= 100) {
-			playFeedback(userGuess);
+			playGame(userGuess);
 		}
 		else {
 			$("#feedback").text('ERROR: Number must be an integer between 0 and 100!');
@@ -34,7 +34,7 @@ $(document).ready(function(){
 		}
 	}
 
-	function playFeedback(userGuess) {
+	function playGame(userGuess) {
 		var difference = userGuess - randomNumber;
 		if (difference === 0) {
 			$("#feedback").text('Congratulations, you win!');
