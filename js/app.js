@@ -24,23 +24,9 @@ $(document).ready(function(){
 		return window.location.reload();
 	}
 
-	function sendGuessList(userGuess) {
-
-		if (userGuess < randomNumber) {
-			$("#guessList").append('<li>' + userGuess + '</li>');
-		}
-		else if (userGuess > randomNumber) {
-			$("#guessList").append('<li>' + userGuess + '</li>');
-		}
-		else {
-			$("#feedback").append('Congratulations, you won!');
-		}
-	}
-
 	function validateGuess(userGuess) {
 		if (userGuess % 1 === 0 && userGuess >= 1 && userGuess <= 100) {
 			playFeedback(userGuess);
-			sendGuessList(userGuess);
 		}
 		else {
 			$("#feedback").text('ERROR: Number must be an integer between 0 and 100!');
@@ -50,32 +36,35 @@ $(document).ready(function(){
 
 	function playFeedback(userGuess) {
 		var difference = userGuess - randomNumber;
-		if (userGuess === randomNumber) {
-			$("#feedback").text('Congratulations, you are burning up!');
-			$("span").html(parseInt($("span").html()) + 1);
+		if (difference === 0) {
+			$("#feedback").text('Congratulations, you win!');
 		}
-		else { 
-			
-			if (userGuess !== randomNumber && difference >= 30 && difference <= 49) {
+		else {
+			if (difference >= 30 && difference <= 49) {
 				$("#feedback").text('You are cold!');
 				$("span").html(parseInt($("span").html()) + 1);
-			}
-			else if (userGuess !== randomNumber && difference >= 20 && difference <= 29) {
+				$("#guessList").append('<li>' + userGuess + '</li>');
+			}			
+			else if (difference >= 20 && difference <= 29) {
 				$("#feedback").text('You are warm!');
 				$("span").html(parseInt($("span").html()) + 1);
+				$("#guessList").append('<li>' + userGuess + '</li>');
 			}
-			else if (userGuess !== randomNumber && difference >= 10 && difference <= 19) {
+			else if (difference >= 10 && difference <= 19) {
 				$("#feedback").text('You are hot!');
 				$("span").html(parseInt($("span").html()) + 1);
+				$("#guessList").append('<li>' + userGuess + '</li>');
 			}
-			else if (userGuess !== randomNumber && difference > 1 && difference <= 9) {
-				$("#feedback").text('You are on fire!');
-				$("span").html(parseInt($("span").html()) + 1);
-			}
-			else {
+			else if (difference >= 50 && difference <= 100) {
 				$("#feedback").text('You are ice cold!');
 				$("span").html(parseInt($("span").html()) + 1);
+				$("#guessList").append('<li>' + userGuess + '</li>');
 			}
+			else {
+				$("#feedback").text('You are on fire!');
+				$("span").html(parseInt($("span").html()) + 1);
+				$("#guessList").append('<li>' + userGuess + '</li>');
+			}		
 		}
 	}
 
