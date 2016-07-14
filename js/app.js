@@ -24,21 +24,16 @@ $(document).ready(function(){
 		return window.location.reload();
 	}
 
-	function playFeedback(userGuess) {
+	function sendGuessList(userGuess) {
 
-		if (userGuess > randomNumber) {
-			$("#feedback").text('You are too high!');
-			$("span").html(parseInt($("span").html()) + 1);
-			$("ul#guessList").append('<li>' + userGuess + '</li>');
+		if (userGuess < randomNumber) {
+			$("#guessList").append('<li>' + userGuess + '</li>');
 		}
-		else if (userGuess < randomNumber) {
-			$("#feedback").text('You are too low!');
-			$("span").html(parseInt($("span").html()) + 1);
-			$("ul#guessList").append('<li>' + userGuess + '</li>');
+		else if (userGuess > randomNumber) {
+			$("#guessList").append('<li>' + userGuess + '</li>');
 		}
 		else {
-			$("#feedback").text('Congratulations, you win!');
-			$("span").html(parseInt($("span").html()) + 1);
+			$("#feedback").append('Congratulations, you won!');
 		}
 	}
 
@@ -53,24 +48,34 @@ $(document).ready(function(){
 		}
 	}
 
-	function sendGuessList(userGuess) {
-		if (userGuess === randomNumber + 50 <= userGuess === randomNumber + 100) {
-			$("#guessList").text('You are ice cold!');
+	function playFeedback(userGuess) {
+		var difference = userGuess - randomNumber;
+		if (userGuess === randomNumber) {
+			$("#feedback").text('Congratulations, you are burning up!');
+			$("span").html(parseInt($("span").html()) + 1);
 		}
-		else if (userGuess === randomNumber + 30 <= userGuess === randomNumber + 49) {
-			$("#guessList").text('You are cold!');
-		}
-		else if (userGuess === randomNumber + 20 <= userGuess === randomNumber + 29) {
-			$("#guessList").text('You are warm!');
-		}
-		else if (userGuess === randomNumber + 10 <= userGuess === randomNumber + 19) {
-			$("#guessList").text('You are hot!');
-		}
-		else if (userGuess === randomNumber + 1 <= userGuess === randomNumber + 9) {
-			$("#guessList").text('You are on fire!');
-		}
-		else {
-			$("#guessList").text('You are scorched!');
+		else { 
+			
+			if (userGuess !== randomNumber && difference >= 30 && difference <= 49) {
+				$("#feedback").text('You are cold!');
+				$("span").html(parseInt($("span").html()) + 1);
+			}
+			else if (userGuess !== randomNumber && difference >= 20 && difference <= 29) {
+				$("#feedback").text('You are warm!');
+				$("span").html(parseInt($("span").html()) + 1);
+			}
+			else if (userGuess !== randomNumber && difference >= 10 && difference <= 19) {
+				$("#feedback").text('You are hot!');
+				$("span").html(parseInt($("span").html()) + 1);
+			}
+			else if (userGuess !== randomNumber && difference > 1 && difference <= 9) {
+				$("#feedback").text('You are on fire!');
+				$("span").html(parseInt($("span").html()) + 1);
+			}
+			else {
+				$("#feedback").text('You are ice cold!');
+				$("span").html(parseInt($("span").html()) + 1);
+			}
 		}
 	}
 
