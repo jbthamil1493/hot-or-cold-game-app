@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
 
   	$(".what").click(function(){
@@ -40,7 +39,7 @@ $(document).ready(function(){
 	function validateGuess(userGuess) {
 		if (userGuess % 1 === 0 && userGuess >= 1 && userGuess <= 100) {
 			playFeedback(userGuess);
-			sendGuestList(userGuess);
+			sendGuessList(userGuess);
 		}
 		else {
 			$("#feedback").text('ERROR: Number must be an integer between 0 and 100!');
@@ -48,24 +47,24 @@ $(document).ready(function(){
 		}
 	}
 
-	function sendGuestList(userGuess) {
-		if (userGuess === randomNumber) {
-			$("#guessList").text('You are burning up!');
-		}
-		else if (userGuess === randomNumber + 50 <= 100) {
+	function sendGuessList(userGuess) {
+		if (userGuess === randomNumber + 50 <= userGuess === randomNumber + 100) {
 			$("#guessList").text('You are ice cold!');
 		}
-		else if (userGuess === randomNumber + 30 <= 49) {
+		else if (userGuess === randomNumber + 30 <= userGuess === randomNumber + 49) {
 			$("#guessList").text('You are cold!');
 		}
-		else if (userGuess === randomNumber + 20 <= 29) {
+		else if (userGuess === randomNumber + 20 <= userGuess === randomNumber + 29) {
 			$("#guessList").text('You are warm!');
 		}
-		else if (userGuess === randomNumber + 11 <= 19) {
+		else if (userGuess === randomNumber + 10 <= userGuess === randomNumber + 19) {
 			$("#guessList").text('You are hot!');
 		}
-		else {
+		else if (userGuess === randomNumber + 1 <= userGuess === randomNumber + 9) {
 			$("#guessList").text('You are on fire!');
+		}
+		else {
+			$("#guessList").text('You are scorched!');
 		}
 	}
 
